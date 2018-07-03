@@ -7,6 +7,9 @@
 <div class="uk-container">
     <div class="uk-text-center">
     <h1 class="uk-padding-large" th:text="${helloworld}"></h1>
+        <div th:if="${session.inSession != null}" class="uk-margin">
+            <p th:text="${session.inSession}"> </p>
+        </div>
     </div>
 </div>
 </body>

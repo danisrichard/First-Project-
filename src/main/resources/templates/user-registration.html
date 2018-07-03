@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head"></head>
@@ -7,22 +7,24 @@
 <div class="uk-container">
     <div clas="uk-margin">
         <div class="uk-text-center">
-            <h1 th:text="'Hello ' + ${nameValue}"></h1>
-            <legend class="uk-legend">Send your name ( not secure! )</legend>
-            <form method="GET" th:action="@{/greeting}">
+            <legend class="uk-legend">Add attribute to session!</legend>
+            <form method="POST" th:action="@{/add-user}" th:user="${user}">
                 <fieldset class="uk-fieldset">
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input class="uk-input" name="name" placeholder="Your name!">
+                            <input class="uk-input" th:field="*{user.firstName}" placeholder="First Name">
+                        </div>
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                            <input class="uk-input" th:field="*{user.secondName}" placeholder="Second Name">
                         </div>
                     </div>
-                    <button class="uk-button" type="submit"> Send my name!</button>
+                    <button class="uk-button" type="submit"> Send it!</button>
                 </fieldset>
             </form>
         </div>
     </div>
 </div>
-
 </body>
 </html>
