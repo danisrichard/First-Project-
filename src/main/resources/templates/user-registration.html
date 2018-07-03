@@ -5,9 +5,11 @@
 <body>
 <div id="navbar" class="uk-padding-small" th:replace="fragments/navbar::navbar"></div>
 <div class="uk-container">
-    <div class="uk-margin">
+    <div clas="uk-margin">
         <div class="uk-text-center">
-            <legend class="uk-legend">Add attribute to session!</legend>
+            <div class="uk-margin">
+                <legend class="uk-legend">Add user to list!</legend>
+            </div>
             <form method="POST" th:action="@{/add-user}" th:user="${user}">
                 <fieldset class="uk-fieldset">
                     <div class="uk-margin">
@@ -20,12 +22,19 @@
                             <input class="uk-input" th:field="*{user.secondName}" placeholder="Second Name">
                         </div>
                     </div>
-                    <button class="uk-button" type="submit" id="user-reg"> Send it!</button>
+<<<<<<< Updated upstream
+                    <button class="uk-button" type="submit"> Send it!</button>
+=======
+                    <button class="uk-button uk-button-primary" type="submit"> Register! </button>
+>>>>>>> Stashed changes
                 </fieldset>
             </form>
         </div>
     </div>
-   <div id="user-table" th:replace="user-section/user-table"></div>
+<<<<<<< Updated upstream
+=======
+    <div id="user-table" th:replace="user-section/user-table"></div>
+>>>>>>> Stashed changes
 </div>
 </body>
 </html>

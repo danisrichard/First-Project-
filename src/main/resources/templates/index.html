@@ -6,10 +6,14 @@
 <div id="navbar" class="uk-padding-small" th:replace="fragments/navbar::navbar"></div>
 <div class="uk-container">
     <div class="uk-text-center">
-    <h1 class="uk-padding-large" th:text="${helloworld}"></h1>
+        <h1 class="uk-padding-large" th:text="${helloworld}"></h1>
         <div th:if="${session.inSession != null}" class="uk-margin">
-            <p > You session attribute: </p>
+<<<<<<< Updated upstream
             <p th:text="${session.inSession}"> </p>
+=======
+            <p> Your session attribute: </p>
+            <p th:text="${session.inSession}"></p>
+>>>>>>> Stashed changes
         </div>
     </div>
 </div>
