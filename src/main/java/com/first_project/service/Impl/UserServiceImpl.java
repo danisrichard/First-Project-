@@ -1,24 +1,24 @@
 package com.first_project.service.Impl;
 
 import com.first_project.entity.User;
+import com.first_project.repository.UserRepository;
 import com.first_project.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private List<User> userList = new ArrayList<>();
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
-    public List<User> getAllUser() {
-        return userList;
+    public Iterable<User> getAllUser() {
+        return userRepository.findAll();
     }
 
     @Override
     public void addNewUserToList(User user) {
-        userList.add(user);
+        userRepository.save(user);
     }
 }

@@ -3,6 +3,7 @@ package com.first_project.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class User {
@@ -10,7 +11,9 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty(message = "First name is required")
     private String firstName;
+    @NotEmpty(message = "First name is required")
     private String secondName;
 
     public User() {

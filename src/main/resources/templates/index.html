@@ -9,7 +9,7 @@
         <h1 class="uk-padding-large" th:text="${helloworld}"></h1>
         <div th:if="${session.inSession != null}" class="uk-margin">
 
-            <p> Your session attribute: </p>
+            <p th:if="${session.inSession != null}"> Your session attribute: </p>
             <p th:text="${session.inSession}"></p>
         </div>
     </div>
