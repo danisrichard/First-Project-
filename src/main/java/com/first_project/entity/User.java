@@ -1,16 +1,11 @@
-package com.first_project.first_project.entity;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+package com.first_project.entity;
 
 public class User {
-    @NotNull
-    @NotEmpty
     private String firstName;
-
-    @NotNull
-    @NotEmpty
     private String secondName;
+
+    public User() {
+    }
 
     public String getFirstName() {
         return firstName;

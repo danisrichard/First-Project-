@@ -1,4 +1,4 @@
-package com.first_project.first_project.controller;
+package com.first_project.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

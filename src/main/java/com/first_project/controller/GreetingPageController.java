@@ -1,12 +1,12 @@
-package com.first_project.first_project.controller;
+package com.first_project.controller;
 
-import com.first_project.first_project.entity.User;
+import com.first_project.entity.User;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-
 
 @Controller
 public class GreetingPageController {
@@ -39,14 +39,15 @@ public class GreetingPageController {
     }
 
     @GetMapping(value = "/user-registration")
-    public String loadUserRegSite(){
-        return "userregistration";
+    public String loadUserRegSite(Model model){
+        model.addAttribute("user", new User());
+        return "user-registration";
     }
 
-    @RequestMapping(value = "/add-user", method = RequestMethod.POST)
-    public @ResponseBody String addUserToSession(@RequestBody User user){
+    @RequestMapping(value = "/add-user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String addUserToSession(User user){
         System.out.println(user.toString());
-        return "congrat";
+        return "user-registration";
     }
 
 }
