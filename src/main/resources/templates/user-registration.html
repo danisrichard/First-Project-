@@ -5,7 +5,7 @@
 <body>
 <div id="navbar" class="uk-padding-small" th:replace="fragments/navbar::navbar"></div>
 <div class="uk-container">
-    <div clas="uk-margin">
+    <div class="uk-margin">
         <div class="uk-text-center">
             <legend class="uk-legend">Add attribute to session!</legend>
             <form method="POST" th:action="@{/add-user}" th:user="${user}">
@@ -20,11 +20,12 @@
                             <input class="uk-input" th:field="*{user.secondName}" placeholder="Second Name">
                         </div>
                     </div>
-                    <button class="uk-button" type="submit"> Send it!</button>
+                    <button class="uk-button" type="submit" id="user-reg"> Send it!</button>
                 </fieldset>
             </form>
         </div>
     </div>
+   <div id="user-table" th:replace="user-section/user-table"></div>
 </div>
 </body>
 </html>
