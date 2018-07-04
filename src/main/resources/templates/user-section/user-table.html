@@ -3,12 +3,14 @@
         <table class="uk-table uk-table-responsive uk-table-divider" th:if="${!userList.isEmpty()}">
             <thead>
             <tr>
+                <th>User ID (UUID)</th>
                 <th>User FirstName</th>
                 <th>User SecondName</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="user :${userList}">
+                <td th:text="${user.getId()}"></td>
                 <td th:text="${user.getFirstName()}"></td>
                 <td th:text="${user.getSecondName()}"></td>
             </tr>
