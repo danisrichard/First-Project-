@@ -6,6 +6,11 @@ import com.first_project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.concurrent.Future;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -20,5 +25,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addNewUser(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public Future<User> findUserByFirstNameQuery(String firstName) {
+        return userRepository.findByFirstName(firstName);
+    }
+
+    @Override
+    public List<User> findUserByFirstNameWithoutQuery(String firstName) {
+        Iterable<User> listOfAllUser = userRepository.findAll();
+        return StreamSupport.stream(listOfAllUser.spliterator(),false)
+                .filter(e -> e.getFirstName().equals(firstName))
+                .collect(Collectors.toList());
     }
 }
