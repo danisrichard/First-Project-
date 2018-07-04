@@ -27,10 +27,10 @@ public class DummyUserRegistrationController {
     }
 
     @RequestMapping(value = "/add-user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String addUserToSession(@Valid User user, BindingResult bindingResult){
+    public String registerUser(@Valid User user, BindingResult bindingResult){
         if(!bindingResult.hasErrors()){
-            userService.addNewUserToList(user);
+            userService.addNewUser(user);
         }
         return "redirect:/user-registration";
     }
-}mes
+}
