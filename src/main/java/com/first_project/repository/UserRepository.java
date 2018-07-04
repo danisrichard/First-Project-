@@ -3,6 +3,7 @@ package com.first_project.repository;
 import com.first_project.entity.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,6 @@ public interface UserRepository extends CrudRepository<User,UUID> {
     // VERSION: A
     @Async
     @Query("SELECT * FROM USER WHERE FIRSTNAME = :FIRSTNAME")
-    Future<User> findByFirstName(String firstName);
+    Future<User> findByFirstName(@Param("firstName") String firstName);
 
 }
