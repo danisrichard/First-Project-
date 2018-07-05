@@ -2,7 +2,7 @@ package com.first_project.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,10 +12,9 @@ import java.util.UUID;
 @Entity
 public class User {
 
-    @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name="id")
+    @Id
     private UUID id;
     @NotEmpty(message = "First name is required")
     private String firstName;
@@ -23,6 +22,12 @@ public class User {
     private String secondName;
 
     public User() {
+    }
+
+    // just for test
+    public User(@NotEmpty(message = "First name is required") String firstName, @NotEmpty(message = "Second name is required") String secondName) {
+        this.firstName = firstName;
+        this.secondName = secondName;
     }
 
     public UUID getId() {

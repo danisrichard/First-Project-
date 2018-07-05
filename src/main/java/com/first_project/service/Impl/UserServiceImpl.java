@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.Future;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Future<User> findUserByFirstNameQuery(String firstName) {
-        return userRepository.findByFirstName(firstName);
+    public Optional<User> findUserByFirstNameQuery(String firstName) {
+        return null;
     }
 
     @Override
