@@ -1,9 +1,10 @@
 package com.first_project.controller;
 
-import com.first_project.utils.LogLevel;
+import com.first_project.utils.LogUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,10 +16,19 @@ public class LogController {
     private static final Logger logger = LogManager.getLogger(LogController.class);
 
     @Autowired
-    private LogLevel logLevel;
+    private LogUtils logUtils;
 
     @RequestMapping(value = "/config/loglevel/get{packageName}", method = RequestMethod.GET)
-    public String logLevel(@RequestParam(value = "packageName", required = false) String packageName){
-        return logLevel.getLevelInformationInJson(packageName);
+    public String getLogLevelByPackage(@RequestParam(value = "packageName", required = false) String packageName){
+        return logUtils.getLevelInformationInJson(packageName);
+    }
+
+    @RequestMapping(value = "/config/loglevel/set", method = RequestMethod.GET)
+    public String setLogLevelToPackage(@RequestParam(value = "packageName", required = false) String packageName,
+                                       @RequestParam(value = "levelName", required = false) String levelName){
+        String packageName1 = "com.first_project.entity";
+        String levelName1 = "WARN";
+
+        return logUtils.setCustomLogLevel(levelName1, packageName1);
     }
 }

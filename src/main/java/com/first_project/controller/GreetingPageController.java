@@ -30,7 +30,7 @@ public class GreetingPageController {
         return "session";
     }
 
-    @RequestMapping(value = "/add-to-session", method = RequestMethod.POST)
+    @RequestMapping(value = "/add-to-session")
     public String addToSession(@RequestParam(value = "inputValue", required = false) String inputValue, HttpSession httpSession) {
         httpSession.setAttribute("inSession", inputValue);
         return "session";

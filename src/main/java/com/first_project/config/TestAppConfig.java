@@ -2,7 +2,7 @@ package com.first_project.config;
 
 import com.first_project.service.Impl.UserServiceImpl;
 import com.first_project.service.UserService;
-import com.first_project.utils.LogLevel;
+import com.first_project.utils.LogUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,7 +15,7 @@ public class TestAppConfig {
     }
 
     @Bean
-    LogLevel logLevel(){
-        return new LogLevel();
+    LogUtils logLevel(){
+        return new LogUtils();
     }
 }
