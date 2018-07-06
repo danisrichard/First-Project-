@@ -17,8 +17,6 @@ public class RequestResponseLogging implements HandlerInterceptor {
 
     private Long postTimeInMs;
 
-    //https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/HandlerInterceptor.html
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         return true;

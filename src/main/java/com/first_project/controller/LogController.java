@@ -4,7 +4,6 @@ import com.first_project.utils.LogUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,12 +22,9 @@ public class LogController {
         return logUtils.getLevelInformationInJson(packageName);
     }
 
-    @RequestMapping(value = "/config/loglevel/set", method = RequestMethod.GET)
+    @RequestMapping(value = "/config/loglevel/set{packageName}{levelName}", method = RequestMethod.GET)
     public String setLogLevelToPackage(@RequestParam(value = "packageName", required = false) String packageName,
                                        @RequestParam(value = "levelName", required = false) String levelName){
-        String packageName1 = "com.first_project.entity";
-        String levelName1 = "WARN";
-
-        return logUtils.setCustomLogLevel(levelName1, packageName1);
+        return logUtils.setCustomLogLevel(levelName, packageName);
     }
 }

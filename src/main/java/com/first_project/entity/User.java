@@ -24,12 +24,6 @@ public class User {
     public User() {
     }
 
-    // just for test
-    public User(@NotEmpty(message = "First name is required") String firstName, @NotEmpty(message = "Second name is required") String secondName) {
-        this.firstName = firstName;
-        this.secondName = secondName;
-    }
-
     public UUID getId() {
         return id;
     }

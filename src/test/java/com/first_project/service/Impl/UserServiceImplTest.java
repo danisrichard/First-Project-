@@ -33,26 +33,12 @@ class UserServiceImplTest {
     void init(){
     }
 
-    private User getUser(){
-        return new User("macska","cica");
-    }
-
     @Test
     void getAllUser() {
     }
 
     @Test
     void addNewUser() {
-
-        User user = getUser();
-
-        User userDB = userRepository.save(user);
-
-        logger.info(userDB.getFirstName());
-
-        assertNotNull(userDB);
-
-        assertEquals(user.getFirstName(),userDB.getFirstName());
 
     }
 

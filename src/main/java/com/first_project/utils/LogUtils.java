@@ -7,8 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.Configuration;
-import org.apache.logging.log4j.core.config.Configurator;
-import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
@@ -18,33 +16,24 @@ import java.util.Optional;
 @Component
 public class LogUtils {
 
-    private static final Logger utilsLogger = LogManager.getLogger(LogUtils.class);
-
-    public String getLevelInformationInJson(String packageName) throws IllegalArgumentException{
-        if(packageName == null) throw new IllegalArgumentException("Not valid input");
+    public String getLevelInformationInJson(String packageName) throws IllegalArgumentException {
+        if (packageName == null) throw new IllegalArgumentException("Not valid input");
         Logger log = LogManager.getLogger(packageName);
 
         return new Gson().toJson(getLoggerInformation(log.getName(), log.getLevel().name()));
     }
 
-    public String setCustomLogLevel(String logLevel, String packageName) throws IllegalArgumentException{
-        if(checkInputs(logLevel,packageName)) throw new IllegalArgumentException("Not valid input!");
+    public String setCustomLogLevel(String logLevel, String packageName) throws IllegalArgumentException {
+        if (checkInputs(logLevel, packageName)) throw new IllegalArgumentException("Not valid input!");
 
-        try {
-            Level concreteLevel = getConcreteLevel(logLevel);
+        Level concreteLevel = getConcreteLevel(logLevel);
 
-            LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
-            Configuration conf = ctx.getConfiguration();
-            conf.getLoggerConfig(packageName).setLevel(concreteLevel);
-            ctx.updateLoggers(conf);
+        LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+        Configuration conf = ctx.getConfiguration();
+        conf.getLoggerConfig(packageName).setLevel(concreteLevel);
+        ctx.updateLoggers(conf);
 
-            return getLevelInformationInJson(packageName);
-
-        }catch (Exception e){
-            utilsLogger.info("Exception: " + e.getMessage());
-        }
-
-        return null;
+        return getLevelInformationInJson(packageName);
     }
 
     private LoggerInformation getLoggerInformation(String packageName, String s) {
@@ -66,6 +55,4 @@ public class LogUtils {
     private boolean checkInputs(String logLevel, String packageName) {
         return logLevel == null && packageName == null;
     }
-
-
 }
