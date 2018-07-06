@@ -19,7 +19,7 @@ import java.util.Optional;
 public class LogUtils {
 
     private static final Logger utilsLogger = LogManager.getLogger(LogUtils.class);
-    
+
     public String getLevelInformationInJson(String packageName) throws IllegalArgumentException{
         if(packageName == null) throw new IllegalArgumentException("Not valid input");
         Logger log = LogManager.getLogger(packageName);
@@ -33,21 +33,12 @@ public class LogUtils {
         try {
             Level concreteLevel = getConcreteLevel(logLevel);
 
-            //org.apache.logging.slf4j.SLF4JLoggerContext cannot be cast to org.apache.logging.log4j.core.LoggerContext
-
-            /*
             LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
-            Configuration config = ctx.getConfiguration();
-            LoggerConfig loggerConfig = config.getLoggerConfig(packageName);
-            loggerConfig.setLevel(concreteLevel);
-            ctx.updateLoggers();
-            */
+            Configuration conf = ctx.getConfiguration();
+            conf.getLoggerConfig(packageName).setLevel(concreteLevel);
+            ctx.updateLoggers(conf);
 
-            /*
-            Configurator.setLevel(packageName, concreteLevel);
-            */
-
-            return new Gson().toJson(getLoggerInformation(packageName, logLevel.toUpperCase()));
+            return getLevelInformationInJson(packageName);
 
         }catch (Exception e){
             utilsLogger.info("Exception: " + e.getMessage());
