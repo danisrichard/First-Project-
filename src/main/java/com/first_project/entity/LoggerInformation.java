@@ -15,12 +15,12 @@ public class LoggerInformation {
         public Builder() {
         }
 
-        public Builder withpackageName(String packageName) {
+        public Builder withPackageName(String packageName) {
             this.packageName = packageName;
             return this;  //By returning the builder each time, we can create a fluent interface.
         }
 
-        public Builder withlevelName(String levelName) {
+        public Builder withLevelName(String levelName) {
             this.levelName = levelName;
             return this;
         }

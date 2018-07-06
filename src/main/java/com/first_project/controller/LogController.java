@@ -4,8 +4,8 @@ import com.first_project.utils.LogLevel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +17,7 @@ public class LogController {
     @Autowired
     private LogLevel logLevel;
 
-    @GetMapping("/config/loglevel/get{packageName}")
+    @RequestMapping(value = "/config/loglevel/get{packageName}", method = RequestMethod.GET)
     public String logLevel(@RequestParam(value = "packageName", required = false) String packageName){
         return logLevel.getLevelInformationInJson(packageName);
     }

@@ -12,9 +12,20 @@ public class LogLevel {
     public String getLevelInformationInJson(String packageName) throws IllegalArgumentException{
         if(packageName == null) throw new IllegalArgumentException("Not valid input");
         Logger log = LogManager.getLogger(packageName);
-        LoggerInformation loggerInformation = new LoggerInformation.Builder().withlevelName(log.getLevel().name()).withpackageName(log.getName()).build();
+        LoggerInformation loggerInformation = new LoggerInformation.Builder()
+                                                                .withLevelName(log.getLevel().name())
+                                                                .withPackageName(log.getName())
+                                                                .build();
 
         return new Gson().toJson(loggerInformation);
     }
+
+    public String doCustomLogLevel(String logLevel, String packageName) throws IllegalArgumentException{
+        if(logLevel == null || packageName == null) throw new IllegalArgumentException("Not valid input");
+        //Level logLevel = Level.forName("inputName", "inputNumber")
+
+        return null;
+    }
+
 
 }
